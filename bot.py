@@ -17,4 +17,6 @@ def receive_sms():
     requests.post(url, data={"chat_id": CHAT_ID, "text": text})
     return "OK", 200
 
-app.run(host="0.0.0.0", port=8080)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))  # берем порт из Render или 8080 по умолчанию
+    app.run(host="0.0.0.0", port=port)
